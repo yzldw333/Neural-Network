@@ -1,5 +1,5 @@
 #Neural Network
-This a neural network implemented by myself.  
+This a neural network implemented by myself.  (Only Full-Connected Layer)
 
 Hope it will be helpful to others.  
 

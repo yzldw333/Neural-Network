@@ -28,4 +28,4 @@ if __name__=="__main__":
     X_train, y_train, X_val, y_val, X_test, y_test = load_dataset()
     first_train_img = X_train[0][0]
     first_train_label = y_train[0]
-    print(first_train_img.shape)  ##should be 28*28
+    print(X_train.shape)  ##should be 28*28

@@ -20,12 +20,12 @@ class NeuralNetwork:
     def setSamples(self,samples_x,samples_y):
         self.samples_x = samples_x
         self.samples_y = samples_y
-        total_m = np.size(self.samples_x,1)
+        total_m = np.size(self.samples_x,0)
         train_m = int(0.7*total_m)
         cvd_m = int(0.9*total_m)
-        self.setTrain(self.samples_x[:, :train_m],self.samples_y[:, :train_m])
-        self.setCVD(self.samples_x[:,  train_m:cvd_m],self.samples_y[:,  train_m:cvd_m])
-        self.setTest(self.samples_x[:, cvd_m:],self.samples_y[:, cvd_m:])
+        self.setTrain(self.samples_x[:train_m,:],self.samples_y[:train_m,:])
+        self.setCVD(self.samples_x[train_m:cvd_m,:],self.samples_y[train_m:cvd_m,:])
+        self.setTest(self.samples_x[cvd_m:,:],self.samples_y[cvd_m:,:])
 
     def setTrain(self,train_x,train_y):
         self.train_x = train_x
@@ -43,16 +43,17 @@ class NeuralNetwork:
         self.test_y = test_y
 
     def setFinalTest(self):
-        X = np.hstack(self.train_x,self.cvd_x)
-        Y = np.hstack(self.train_y,self.cvd_y)
+        X = np.vstack(self.train_x,self.cvd_x)
+        Y = np.vstack(self.train_y,self.cvd_y)
         self.model.SetTrainSamples(X,Y)
         self.model.SetTestSamples(self.test_x,self.test_y)
 
-    def MiniBatch_Train(self,batch_size,steps,ifshow=False):
-        res = self.model.minibatch_train(batch_size,steps,ifshow)
+    def MiniBatch_Train(self,batch_size,steps,ifshow=True,gradiantCheck=False):
+        res = self.model.minibatch_train(batch_size,steps,ifshow,gradiantCheck)
         if res is False:
             return
         self.model.test_error()
+        self.model.store_parameters()
 
     def Final_Train_and_Evaluate(self,batch_size,steps,ifshow=False):
         self.setFinalTest()

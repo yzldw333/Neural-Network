@@ -46,7 +46,6 @@ class InputLayer(BaseLayer):
         self.images = value
         m = np.size(self.images,0)
         self.value = self.images.reshape(m,self.channel*self.height*self.width)
-        self.value = self.value.transpose()
         self.num = self.channel*self.height*self.width
 
 
@@ -126,17 +125,21 @@ class ConvolutionLayer(BaseConvolutionLayer):
             self.output_layer = p
         costValue = self.output_layer.costValue
         if costValue>2:
-            self.rate = 0.3
-        elif costValue>1.5:
             self.rate = 0.2
+        elif costValue>1.5:
+            self.rate = 0.15
         elif costValue >1:
             self.rate = 0.1
         elif costValue >0.5:
-            self.rate = 0.03
-        elif costValue >0.07:
+            self.rate = 0.04
+        elif costValue >0.05:
             self.rate = 0.02
-        elif costValue >0.04:
+        elif costValue >0.02:
             self.rate = 0.015
+        elif costValue >0.01:
+            self.rate = 0.008
+        elif costValue >0.005:
+            self.rate = 0.004
 
     def initParameters(self):
 
@@ -327,17 +330,22 @@ class FullCrossLayer(BaseLayer):
             self.output_layer = p
         costValue = self.output_layer.costValue
         if costValue>2:
-            self.rate = 0.3
-        elif costValue>1.5:
             self.rate = 0.2
+        elif costValue>1.5:
+            self.rate = 0.15
         elif costValue >1:
             self.rate = 0.1
         elif costValue >0.5:
-            self.rate = 0.03
-        elif costValue >0.07:
+            self.rate = 0.04
+        elif costValue >0.05:
             self.rate = 0.02
-        elif costValue >0.04:
+        elif costValue >0.02:
             self.rate = 0.015
+        elif costValue >0.01:
+            self.rate = 0.008
+        elif costValue >0.005:
+            self.rate = 0.004
+
 
     def initParameters(self):
 

@@ -51,9 +51,9 @@ class NeuralNetwork:
     def MiniBatch_Train(self,batch_size,steps,ifshow=True,gradiantCheck=False):
         res = self.model.minibatch_train(batch_size,steps,ifshow,gradiantCheck)
         if res is False:
+            print('Trainning Error!')
             return
         self.model.test_error()
-        self.model.store_parameters()
 
     def Final_Train_and_Evaluate(self,batch_size,steps,ifshow=False):
         self.setFinalTest()

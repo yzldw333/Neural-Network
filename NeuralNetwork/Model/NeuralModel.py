@@ -250,14 +250,17 @@ class NeuralModel:
         draw_cost = []
         draw_steps = []
         for i in range(steps):
-            # if i%10==0:
-            #     choose = random.sample(range(total_size),tmp_size)
-            choose = random.sample(range(total_size),tmp_size)
+            if i%5==0:
+                choose = random.sample(range(total_size),tmp_size)
+            #choose = random.sample(range(total_size),tmp_size)
             self.input_layer.setValue(self.train_x[choose,:])
 
             self.output_layer.setY(self.train_y[choose,:])
             self.forward_compute()
             self.backward_compute()
+            if np.isnan(self.output_layer.costValue):
+                print('Nan, quit the program!')
+                return False
             draw_cost.append(self.output_layer.costValue)
             draw_steps.append(i)
             # if i%30 is 0:
@@ -270,6 +273,8 @@ class NeuralModel:
         end_time = datetime.datetime.now()
         print('Time:%s'%(end_time))
         print('BP Cost Time:%s'%(end_time-start_time))
+        self.store_parameters()
+        print('Save Parameters...')
         plt.plot(draw_steps,draw_cost,marker='.')
         plt.title('Train with batch size %s' % batch_size)
         plt.show()

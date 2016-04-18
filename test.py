@@ -60,11 +60,13 @@ def DigitRecognitionTest():
                                             ('ConvolutionLayer',(16,5,1)),('MaxPoolingLayer',(2,2)),
                                             ('ConvolutionLayer',(120,4,1))])
     myann.model.SetFullConnectLayer([(84,'ReLu'),(10,None)])
+    #myann.model.SetFullConnectLayer([(28*28,'ReLu'),(30,'ReLu'),(20,'ReLu'),(10,None)])
+
     myann.setTrain(X_train,Y_train)
     myann.setCVD(X_val,Y_val)
     myann.setTest(X_test,Y_test)
     #myann.MiniBatch_Train(1000,20,ifshow=True,gradiantCheck=False)
-    myann.MiniBatch_Train(200,1000,ifshow=True,gradiantCheck=False)
+    myann.MiniBatch_Train(30,2000,ifshow=True,gradiantCheck=False)
 
 if __name__ == '__main__':
     DigitRecognitionTest()

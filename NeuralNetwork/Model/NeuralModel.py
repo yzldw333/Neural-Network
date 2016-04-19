@@ -16,7 +16,7 @@ class NeuralModel:
     train_y = None
     test_x = None
     test_y = None
-    initLayerList = {'INPUT_LAYER':False,'OUTPUT_LAYER':False,'FULL_CONNECT_LAYER':False}
+    initLayerList = {'INPUT_LAYER':False,'OUTPUT_LAYER':False}
     initializeList = {'CONNECT_LAYERS':False}
     name = None
     def __init__(self,name):
@@ -166,26 +166,66 @@ class NeuralModel:
         self.output_layer = OutputLayer()
         self.initLayerList['OUTPUT_LAYER'] = self.output_layer.init(costFuncName)
 
+    def SetLayerSequences(self,LayerDictionary):
+        '''
+            You need to set input and output layer first, then use this function to set other layers between them.
+        :param LayerDictionary: LayerDictionary format is like this.
+                                ('ConvolutionLayer',(channel,height,width))
+                                ('MaxPoolingLayer',(squareHeight,squareWidth))
+                                ('AvgPoolingLayer',(squareHeight,squareWidth))
+                                ('FullCrossLayer',num)
+                                ('Sigmoid',None)
+                                ('Tanh',None)
+                                ('ReLu',None)
+        :return: True or False.
+        '''
+        if self.initLayerList['INPUT_LAYER'] == False or self.initLayerList['OUTPUT_LAYER'] == False:
+            print('Input layer or output layer has not been initialized.')
+            return False
+        for (name,setting) in LayerDictionary:
+            newLayer = None
+            if name == 'ConvolutionLayer':
+                newLayer = ConvolutionLayer(setting[0],setting[1],setting[2])
+                newLayer.name = self.name+str(len(self.sequences))+'layer'
+                self.convolution_pooling_layer.append(newLayer)
+            elif name == 'MaxPoolingLayer':
+                newLayer = MaxPoolingLayer(setting[0],setting[1])
+            elif name == 'AvgPoolingLayer':
+                newLayer = AvgPoolingLayer(setting[0],setting[1])
+            elif name == 'FullCrossLayer':
+                newLayer = FullCrossLayer(setting)  # setting is a integer which means num of FC Layer
+                newLayer.name = self.name+str(len(self.sequences))+'layer'
+                self.full_cross_layer.append(newLayer)
+            elif name == 'Sigmoid':
+                newLayer = SigmoidLayer()
+            elif name == 'Tanh':
+                newLayer = TanhLayer()
+            elif name == 'ReLu':
+                newLayer = ReLuLayer()
+            else:
+                continue
+            if len(self.sequences)!= 0:
+                newLayer.SetLast(self.sequences[-1])
+                self.sequences[-1].SetNext(newLayer)
+            else:
+                newLayer.SetLast(self.input_layer)
+            self.sequences.append(newLayer)
+        if len(self.sequences)!= 0:
+            self.output_layer.SetLast(self.sequences[-1])
+            self.sequences[-1].SetNext(self.output_layer)
+            self.sequences.append(self.output_layer)
+        else:
+            self.output_layer.SetLast(self.input_layer)
+            self.sequences.append(self.output_layer)
+        return True
 
     def SetConvolutionPoolingLayer(self,LayerDictionary):
-        for (name,setting) in LayerDictionary:
-            if name == 'ConvolutionLayer':
-                self.convolution_pooling_layer.append(ConvolutionLayer(setting[0],setting[1],setting[2]))
-            elif name == 'MaxPoolingLayer':
-                self.convolution_pooling_layer.append(MaxPoolingLayer(setting[0],setting[1]))
-            elif name == 'AvgPoolingLayer':
-                self.convolution_pooling_layer.append(AvgPoolingLayer(setting[0],setting[1]))
+        pass
+
+
 
     def SetFullConnectLayer(self,LayerDictionary):
-        for (num,activeFunc) in LayerDictionary:
-            self.full_cross_layer.append(FullCrossLayer(num))
-            if activeFunc == 'Sigmoid':
-                self.full_cross_layer.append(SigmoidLayer())
-            elif activeFunc== 'Tanh':
-                self.full_cross_layer.append(TanhLayer())
-            elif activeFunc== 'ReLu':
-                self.full_cross_layer.append(ReLuLayer())
-        self.initLayerList['FULL_CONNECT_LAYER'] = True
+        pass
 
     # def SetActivationLayer(self,activeName):
     #     if activeName == 'Sigmoid':
@@ -198,22 +238,7 @@ class NeuralModel:
 
 
     def ConnectLayers(self):
-        self.sequences = []
-        self.sequences.append(self.input_layer)
-
-        for layer in self.convolution_pooling_layer:
-            self.sequences[-1].SetNext(layer)
-            layer.name = self.name+str(len(self.sequences))+'layer'
-            layer.SetLast(self.sequences[-1])
-            self.sequences.append(layer)
-        for layer in self.full_cross_layer:
-            self.sequences[-1].SetNext(layer)
-            layer.name = self.name+str(len(self.sequences))+'layer'
-            layer.SetLast(self.sequences[-1])
-            self.sequences.append(layer)
-        self.sequences[-1].SetNext(self.output_layer)
-        self.output_layer.SetLast(self.sequences[-1])
-        self.sequences.append(self.output_layer)
+        pass
 
 
     def SetTrainSamples(self,x,y):
@@ -223,14 +248,12 @@ class NeuralModel:
         self.test_x = x
         self.test_y = y
     def forward_compute(self):
-        layerNum = len(self.sequences)
-        for i in range(1,layerNum):
-            self.sequences[i].forward_compute()
+        for layer in self.sequences:
+            layer.forward_compute()
 
     def backward_compute(self):
-        layerNum = len(self.sequences)
-        for j in range(1,layerNum)[::-1]:
-            self.sequences[j].backward_compute()
+        for layer in self.sequences[::-1]:
+            layer.backward_compute()
 
     def costFunction(self):
         return self.output_layer.costFunc()
@@ -315,8 +338,7 @@ class NeuralModel:
             testy = self.test_y[i,:].reshape(1,classNum)
             self.input_layer.setValue(testx)
             self.output_layer.setY(testy)
-            for j in range(1,layerNum):
-                self.sequences[j].forward_compute()
+            self.forward_compute()
             if self.output_layer.costFunc == self.output_layer.LMS:
                 if self.output_layer.costFunc()<0.1:
                     right+=1

@@ -18,7 +18,9 @@ class NeuralModel:
     test_y = None
     initLayerList = {'INPUT_LAYER':False,'OUTPUT_LAYER':False,'FULL_CONNECT_LAYER':False}
     initializeList = {'CONNECT_LAYERS':False}
-
+    name = None
+    def __init__(self,name):
+        self.name = name
     def gradiant_check(self):
         'just check the first inner product layer'
         linearList = []
@@ -167,11 +169,11 @@ class NeuralModel:
 
     def SetConvolutionPoolingLayer(self,LayerDictionary):
         for (name,setting) in LayerDictionary:
-            if name is 'ConvolutionLayer':
+            if name == 'ConvolutionLayer':
                 self.convolution_pooling_layer.append(ConvolutionLayer(setting[0],setting[1],setting[2]))
-            elif name is 'MaxPoolingLayer':
+            elif name == 'MaxPoolingLayer':
                 self.convolution_pooling_layer.append(MaxPoolingLayer(setting[0],setting[1]))
-            elif name is 'AvgPoolingLayer':
+            elif name == 'AvgPoolingLayer':
                 self.convolution_pooling_layer.append(AvgPoolingLayer(setting[0],setting[1]))
 
     def SetFullConnectLayer(self,LayerDictionary):
@@ -201,12 +203,12 @@ class NeuralModel:
 
         for layer in self.convolution_pooling_layer:
             self.sequences[-1].SetNext(layer)
-            layer.name = str(len(self.sequences))+'layer'
+            layer.name = self.name+str(len(self.sequences))+'layer'
             layer.SetLast(self.sequences[-1])
             self.sequences.append(layer)
         for layer in self.full_cross_layer:
             self.sequences[-1].SetNext(layer)
-            layer.name = str(len(self.sequences))+'layer'
+            layer.name = self.name+str(len(self.sequences))+'layer'
             layer.SetLast(self.sequences[-1])
             self.sequences.append(layer)
         self.sequences[-1].SetNext(self.output_layer)
@@ -238,6 +240,7 @@ class NeuralModel:
         if self.safety_check(gradiantCheck) is False:
             return False
         start_time = datetime.datetime.now()
+        tmp_time = start_time
         print('Time:%s\t\t\tStart computing.\n'%start_time)
         total_size = np.size(self.train_x,0)
         if batch_size > total_size:
@@ -249,9 +252,23 @@ class NeuralModel:
         tmp_size = batch_size
         draw_cost = []
         draw_steps = []
+        startid = 0
         for i in range(steps):
-            if i%5==0:
-                choose = random.sample(range(total_size),tmp_size)
+            #recycle choose
+            if startid >=total_size:
+                startid%=total_size
+            endid = startid+tmp_size
+            choose = []
+            if endid >=total_size:
+                endid%=total_size
+                choose+=list(range(startid,total_size))
+                choose+=list(range(0,endid))
+            else:
+                choose+=list(range(startid,endid))
+            startid+=tmp_size
+            # random choose
+            # if i%5==0:
+            #     choose = random.sample(range(total_size),tmp_size)
             #choose = random.sample(range(total_size),tmp_size)
             self.input_layer.setValue(self.train_x[choose,:])
 
@@ -263,13 +280,10 @@ class NeuralModel:
                 return False
             draw_cost.append(self.output_layer.costValue)
             draw_steps.append(i)
-            # if i%30 is 0:
-            #     print(self.convolution_pooling_layer[0].filters)
-            #     print(self.full_cross_layer[0].theta)
+            new_tmp_time = datetime.datetime.now()
             if ifshow:
-                print('Step %s complete! CostValue %s'%(i,self.output_layer.costValue))
-            # if self.output_layer.costValue<0.2:
-            #     tmp_size = batch_size*2
+                print('Step %s complete! CostValue %s  StepTime %s'%(i,self.output_layer.costValue,new_tmp_time-tmp_time))
+            tmp_time = new_tmp_time
         end_time = datetime.datetime.now()
         print('Time:%s'%(end_time))
         print('BP Cost Time:%s'%(end_time-start_time))

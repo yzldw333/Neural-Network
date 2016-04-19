@@ -28,6 +28,37 @@ def DoubleMoonTest():
     #myann.setSamples(x,y)
     myann.MiniBatch_Train(700,2000)
 
+def LeNet5():
+    myann = NeuralNetwork('LeNet5')
+    #myann.model.SetInputLayer(28*28)
+    myann.model.SetInputLayer(1,28,28)
+    myann.model.SetOutputLayer('SoftMax')
+    myann.model.SetConvolutionPoolingLayer([('ConvolutionLayer',(6,5,1)),('MaxPoolingLayer',(2,2)),
+                                            ('ConvolutionLayer',(16,5,1)),('MaxPoolingLayer',(2,2)),
+                                            ('ConvolutionLayer',(120,4,1))])
+    myann.model.SetFullConnectLayer([(84,'ReLu'),(10,None)])
+    return myann
+def Fake_LeNet5():
+    myann = NeuralNetwork('FakeLeNet5')
+    #myann.model.SetInputLayer(28*28)
+    myann.model.SetInputLayer(1,28,28)
+    myann.model.SetOutputLayer('SoftMax')
+    myann.model.SetConvolutionPoolingLayer([('ConvolutionLayer',(120,5,1)),('MaxPoolingLayer',(2,2)),
+                                            ('ConvolutionLayer',(120,5,1)),('MaxPoolingLayer',(2,2)),
+                                            ('ConvolutionLayer',(120,4,1))])
+    myann.model.SetFullConnectLayer([(84,'ReLu'),(10,None)])
+    return myann
+
+def TestNet():
+    myann = NeuralNetwork('TestNet')
+    #myann.model.SetInputLayer(28*28)
+    myann.model.SetInputLayer(1,28,28)
+    myann.model.SetOutputLayer('SoftMax')
+    myann.model.SetConvolutionPoolingLayer([('ConvolutionLayer',(20,5,1)),('MaxPoolingLayer',(2,2)),
+                                            ('ConvolutionLayer',(50,5,1)),('MaxPoolingLayer',(2,2))])
+    myann.model.SetFullConnectLayer([(500,'ReLu'),(10,None)])
+    return myann
+
 def DigitRecognitionTest():
     X_train, y_train, X_val, y_val, X_test, y_test = load_and_extract_mnist_data.load_dataset()
     # X_train = X_train.reshape(np.size(X_train,0),28*28).transpose()
@@ -51,22 +82,17 @@ def DigitRecognitionTest():
         tmp[e]=1
         Y_test.append(tmp)
     Y_test = np.array(Y_test)
-    myann = NeuralNetwork('Digital Recognition')
-    #myann.model.SetInputLayer(28*28)
-    myann.model.SetInputLayer(1,28,28)
-    myann.model.SetOutputLayer('SoftMax')
-    #myann.model.SetConvolutionPoolingLayer([('ConvolutionLayer',(1,19,1)),('ConvolutionLayer',(1,6,1))])
-    myann.model.SetConvolutionPoolingLayer([('ConvolutionLayer',(6,5,1)),('MaxPoolingLayer',(2,2)),
-                                            ('ConvolutionLayer',(16,5,1)),('MaxPoolingLayer',(2,2)),
-                                            ('ConvolutionLayer',(120,4,1))])
-    myann.model.SetFullConnectLayer([(84,'ReLu'),(10,None)])
+    #myann = LeNet5()
     #myann.model.SetFullConnectLayer([(28*28,'ReLu'),(30,'ReLu'),(20,'ReLu'),(10,None)])
 
+
+    #myann = LeNet5()
+    myann = LeNet5()
     myann.setTrain(X_train,Y_train)
     myann.setCVD(X_val,Y_val)
     myann.setTest(X_test,Y_test)
     #myann.MiniBatch_Train(1000,20,ifshow=True,gradiantCheck=False)
-    myann.MiniBatch_Train(30,2000,ifshow=True,gradiantCheck=False)
+    myann.MiniBatch_Train(30,1500,ifshow=True,gradiantCheck=False)
 
 if __name__ == '__main__':
     DigitRecognitionTest()

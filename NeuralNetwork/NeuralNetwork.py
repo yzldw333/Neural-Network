@@ -16,7 +16,7 @@ class NeuralNetwork:
 
     def __init__(self,name):
         self.name = name
-        self.model = NeuralModel()
+        self.model = NeuralModel(self.name)
     def setSamples(self,samples_x,samples_y):
         self.samples_x = samples_x
         self.samples_y = samples_y

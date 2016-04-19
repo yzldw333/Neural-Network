@@ -36,23 +36,25 @@
         <entry file="file://$PROJECT_DIR$/NeuralNetwork/NeuralNetwork.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-              <folding />
+              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="core.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="core.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41958043">
-              <caret line="338" column="28" selection-start-line="338" selection-start-column="28" selection-end-line="338" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="367" column="0" selection-start-line="367" selection-start-column="0" selection-end-line="367" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#649#746#0" expanded="false" />
-                <element signature="e#14462#14705#0" expanded="false" />
-                <element signature="e#14743#14955#0" expanded="false" />
-                <element signature="e#14993#15305#0" expanded="false" />
+                <element signature="e#14423#14666#0" expanded="false" />
+                <element signature="e#14704#14916#0" expanded="false" />
+                <element signature="e#14954#15266#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -74,20 +76,20 @@
         <entry file="file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="260" column="52" selection-start-line="260" selection-start-column="52" selection-end-line="260" selection-end-column="52" />
+              <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#11014#11097#0" expanded="false" />
+                <element signature="e#11495#11578#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.6875">
+              <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -119,15 +121,15 @@
         <option value="$PROJECT_DIR$/NeuralNetwork/UML.puml" />
         <option value="$PROJECT_DIR$/initialize.py" />
         <option value="$PROJECT_DIR$/load_and_extract_mnist_data.py" />
-        <option value="$PROJECT_DIR$/NeuralNetwork/NeuralNetwork.py" />
-        <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py" />
         <option value="$PROJECT_DIR$/NeuralNetwork/Layers/core.py" />
+        <option value="$PROJECT_DIR$/NeuralNetwork/NeuralNetwork.py" />
+        <option value="$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py" />
+        <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="115" />
+    <option name="x" value="29" />
     <option name="y" value="23" />
     <option name="width" value="1436" />
     <option name="height" value="877" />
@@ -415,16 +417,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="115" y="23" width="1436" height="877" extended-state="0" />
-    <editor active="false" />
+    <frame x="29" y="23" width="1436" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14992826" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14992826" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34140128" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4178344" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5363057" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -451,6 +453,18 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py</url>
+          <line>367</line>
+          <option name="timeStamp" value="141" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py</url>
+          <line>201</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -461,7 +475,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="141" />
+      <option name="time" value="145" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -485,7 +499,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -496,9 +512,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -509,7 +525,7 @@
           <caret line="195" column="20" selection-start-line="195" selection-start-column="20" selection-end-line="195" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#11495#11578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -535,7 +551,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -546,9 +564,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -559,7 +577,7 @@
           <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#11495#11578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -585,7 +603,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -596,9 +616,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -607,7 +627,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -618,9 +640,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -631,7 +653,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#11495#11578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -657,7 +679,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -668,9 +692,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -695,7 +719,7 @@
           <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#11495#11578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -721,7 +745,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="42" column="28" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -732,9 +758,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -759,7 +785,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#11495#11578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -785,7 +811,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -796,9 +824,9 @@
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -809,7 +837,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#11495#11578#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -870,6 +898,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5730337">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -905,23 +934,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
+    <entry file="file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
+          <caret line="367" column="0" selection-start-line="367" selection-start-column="0" selection-end-line="367" selection-end-column="0" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="260" column="52" selection-start-line="260" selection-start-column="52" selection-end-line="260" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#11014#11097#0" expanded="false" />
+            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#649#746#0" expanded="false" />
+            <element signature="e#14423#14666#0" expanded="false" />
+            <element signature="e#14704#14916#0" expanded="false" />
+            <element signature="e#14954#15266#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -929,21 +951,30 @@
     <entry file="file://$PROJECT_DIR$/NeuralNetwork/NeuralNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="18" selection-start-line="0" selection-start-column="18" selection-end-line="0" selection-end-column="18" />
-          <folding />
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py">
+    <entry file="file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41958043">
-          <caret line="338" column="28" selection-start-line="338" selection-start-column="28" selection-end-line="338" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="177" column="0" selection-start-line="177" selection-start-column="0" selection-end-line="177" selection-end-column="0" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14462#14705#0" expanded="false" />
-            <element signature="e#14743#14955#0" expanded="false" />
-            <element signature="e#14993#15305#0" expanded="false" />
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#11495#11578#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6875">
+          <caret line="96" column="24" selection-start-line="96" selection-start-column="24" selection-end-line="96" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>

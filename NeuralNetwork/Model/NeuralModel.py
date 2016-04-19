@@ -158,7 +158,7 @@ class NeuralModel:
         return True
 
 
-    def SetInputLayer(self,channel,width,height):
+    def SetInputLayer(self,channel,width=1,height=1):
         self.input_layer = InputLayer(channel,width,height)
         self.initLayerList['INPUT_LAYER'] = True
 

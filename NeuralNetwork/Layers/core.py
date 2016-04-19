@@ -32,12 +32,12 @@ class InputLayer(BaseLayer):
     width = None
     height = None
     type = None
-    def __init__(self,channel,height,width):
+
+    def __init__(self,channel,height=1,width=1):
         self.channel = channel
         self.width = width
         self.height = height
         self.num = channel*width*height
-
 
     def setValue(self,value):
         self.images = value

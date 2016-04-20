@@ -27,7 +27,7 @@ def LeNet5():
     myann = NeuralNetwork('LeNet5')
     myann.model.SetInputLayer(1,28,28)
     myann.model.SetOutputLayer('SoftMax')
-    myann.model.SetLayerSequences([('ConvolutionLayer',(6,5,1)),('MaxPoolingLayer',(2,2)),
+    myann.model.SetLayerSequences([('ConvolutionLayer',(6,5,1)),('ReLu',None),('MaxPoolingLayer',(2,2)),
                                    ('ConvolutionLayer',(16,5,1)),('MaxPoolingLayer',(2,2)),
                                    ('ConvolutionLayer',(120,4,1)),
                                    ('FullCrossLayer',84),('ReLu',None),
@@ -60,8 +60,8 @@ def DigitRecognitionTest():
     myann.setTrain(X_train,Y_train)
     myann.setCVD(X_val,Y_val)
     myann.setTest(X_test,Y_test)
-    #myann.MiniBatch_Train(1000,30,ifshow=True,gradiantCheck=False) #use cross validation data to test
-    myann.Final_Train_and_Evaluate(64,20,ifshow=True) #use test data to test
+    #myann.MiniBatch_Train(1000,30,ifshow=True,gradiantCheck=True) #use cross validation data to test
+    myann.Final_Train_and_Evaluate(30,100,ifshow=True) #use test data to test
 
 if __name__ == '__main__':
     #DoubleMoonTest()

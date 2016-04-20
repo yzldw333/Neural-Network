@@ -9,12 +9,19 @@ class BaseLayer(metaclass  = abc.ABCMeta):
     num = 0     #num of elements in column not num of samples in row
     delta = None #n*m array for backward computation
     name = None
+
+    images = None
+    width = None
+    height = None
+    channel = None
+
     def forward_compute(self):
         pass
     def backward_compute(self):
         pass
     def SetLast(self,lastLayer):
         self.last_layer = lastLayer
+
     def SetNext(self,nextLayer):
         self.next_layer = nextLayer
     def storeParameters(self):   #钩子函数,有需要子类就进行实现
@@ -24,6 +31,9 @@ class ActivateLayer(BaseLayer):
     def SetLast(self,lastLayer):
         self.last_layer = lastLayer
         self.num = lastLayer.num
+        self.channel = lastLayer.channel
+        self.width = lastLayer.width
+        self.height = lastLayer.height
 
 class InputLayer(BaseLayer):
     # for convolution NN
@@ -51,7 +61,6 @@ class BaseConvolutionLayer(BaseLayer):
     squareSize = None
     width = None
     height = None
-    images = None
     stride = None
 
     def __init__(self,squareSize,stride):
@@ -146,7 +155,7 @@ class ConvolutionLayer(BaseConvolutionLayer):
             self.bias = parameterFile['arr_1']
         except FileNotFoundError as err:
             self.filters = np.random.rand(self.squareSize**2*self.last_layer.channel,self.channel)*self.epsilon*2-self.epsilon
-            self.bias = np.random.rand(self.width*self.height,self.channel)*self.epsilon*2-self.epsilon
+            self.bias = np.random.rand(1,self.channel)*self.epsilon*2-self.epsilon
     def storeParameters(self):
         np.savez(self.name+'.npz',self.filters,self.bias)
 
@@ -178,7 +187,7 @@ class ConvolutionLayer(BaseConvolutionLayer):
         m = np.size(self.images,0)
         self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
         filters_grad = np.zeros([self.squareSize**2*self.last_layer.channel,self.channel])
-        bias_grad = np.zeros([self.width*self.height,self.channel])
+        bias_grad = np.zeros([1,self.channel])
         lastDelta = np.zeros([m,self.last_layer.channel,self.last_layer.height,self.last_layer.width])
         for i in range(m):
             oldImage = self.old_unroll_images_list[i]
@@ -193,7 +202,7 @@ class ConvolutionLayer(BaseConvolutionLayer):
                         tmpValue = newDelta[h*self.width+w,startSquare:startSquare+self.squareSize**2].reshape(self.squareSize,self.squareSize)
                         lastDelta[i,c,lastH:lastH+self.squareSize,lastW:lastW+self.squareSize] += tmpValue
             new_grad = oldImage.transpose().dot(tmpDelta)
-            bias_grad += tmpDelta
+            bias_grad += np.sum(tmpDelta,0)
             filters_grad+=new_grad
         filters_grad/=(1.0*m)
         bias_grad/=(1.0*m)
@@ -380,31 +389,65 @@ class FullCrossLayer(BaseLayer):
 class SigmoidLayer(ActivateLayer):
     def __init__(self):
         pass
+
     def forward_compute(self):
-        self.value = 1.0/(1+np.exp(-self.last_layer.value))
+        if self.last_layer.images!=None:
+            m = np.size(self.last_layer.images,0)
+            self.images = 1.0/(1+np.exp(-self.last_layer.value))
+            self.value = self.images.reshape(m,self.channel*self.height*self.width)
+        else:
+            self.value = 1.0/(1+np.exp(-self.last_layer.value))
     def backward_compute(self):
-        self.last_layer.delta = self.delta*    (self.value)*(1-self.value)
+        if self.last_layer.images!=None:
+            m = np.size(self.images,0)
+            self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
+            self.last_layer.delta = self.delta*(self.images)*(1-self.images)
+        else:
+            self.last_layer.delta = self.delta*    (self.value)*(1-self.value)
         pass
 
 class TanhLayer(ActivateLayer):
     def __init__(self):
         pass
     def forward_compute(self):
-        self.value = np.tanh(self.last_layer.value)
+        if self.last_layer.images!=None:
+            m = np.size(self.last_layer.images,0)
+            self.images = np.tanh(self.last_layer.images)
+            self.value = self.images.reshape(m,self.channel*self.height*self.width)
+        else:
+            self.value = np.tanh(self.last_layer.value)
     def backward_compute(self):
-        self.last_layer.delta = self.delta*    (1-self.value**2)
+        if self.last_layer.images!=None:
+            m = np.size(self.images,0)
+            self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
+            self.last_layer.delta = self.delta*(1-self.images**2)
+        else:
+            self.last_layer.delta = self.delta*(1-self.value**2)
 
 class ReLuLayer(ActivateLayer):
     alpha = 1
     def __init__(self):
         pass
     def forward_compute(self):
-        self.value = np.maximum(0,self.alpha*self.last_layer.value)
+        if self.last_layer.images!=None:
+            m = np.size(self.last_layer.images,0)
+            self.images = np.maximum(0,self.alpha*self.last_layer.images)
+            self.value = self.images.reshape(m,self.channel*self.height*self.width)
+        else:
+            self.value = np.maximum(0,self.alpha*self.last_layer.value)
     def backward_compute(self):
-        tmp = self.value.copy()
-        tmp[tmp<=0] = 0
-        tmp[tmp>0] = self.alpha
-        self.last_layer.delta = self.delta*tmp
+        m = np.size(self.value,0)
+        if self.images!=None:
+            self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
+            tmp = self.images.copy()
+            tmp[tmp<=0] = 0
+            tmp[tmp>0] = self.alpha
+            self.last_layer.delta = self.delta*tmp
+        else:
+            tmp = self.value.copy()
+            tmp[tmp<=0] = 0
+            tmp[tmp>0] = self.alpha
+            self.last_layer.delta = self.delta*tmp
 
 class OutputLayer(BaseLayer):
     h = None #hippothesis

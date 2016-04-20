@@ -52,31 +52,32 @@ class NeuralModel:
         # else:
         #     print('FC Layer Gradiant check failed!')
         #     return False
-        index = 1
-        n = np.size(self.convolution_pooling_layer[index].w,0)
-        m = np.size(self.convolution_pooling_layer[index].w,1)
-        grad_list = []
-        for i in range(n):
-            for j in range(m):
-                self.convolution_pooling_layer[index].w[i,j]+=epsilon
-                self.forward_compute()
-                Ju = self.costFunction()
-                self.convolution_pooling_layer[index].w[i,j]-=epsilon*2
-                self.forward_compute()
-                Jd = self.costFunction()
-                grad_list.append((Ju-Jd)/(2*epsilon))
-                self.convolution_pooling_layer[index].w[i,j]+=epsilon
-        grad_list = np.array(grad_list)
-        self.forward_compute()
-        self.backward_compute()
-        bp_grad_list = self.convolution_pooling_layer[index].grad_w.ravel()
-        distance = np.sum((grad_list-bp_grad_list)**2)/len(bp_grad_list)
-        print(distance)
-        if distance<10e-6:
-            print('AvgPooling Layer Gradiant check pass!')
-        else:
-            print('AvgPooling Layer Gradiant check failed!')
-            return False
+
+        # index = 1
+        # n = np.size(self.convolution_pooling_layer[index].w,0)
+        # m = np.size(self.convolution_pooling_layer[index].w,1)
+        # grad_list = []
+        # for i in range(n):
+        #     for j in range(m):
+        #         self.convolution_pooling_layer[index].w[i,j]+=epsilon
+        #         self.forward_compute()
+        #         Ju = self.costFunction()
+        #         self.convolution_pooling_layer[index].w[i,j]-=epsilon*2
+        #         self.forward_compute()
+        #         Jd = self.costFunction()
+        #         grad_list.append((Ju-Jd)/(2*epsilon))
+        #         self.convolution_pooling_layer[index].w[i,j]+=epsilon
+        # grad_list = np.array(grad_list)
+        # self.forward_compute()
+        # self.backward_compute()
+        # bp_grad_list = self.convolution_pooling_layer[index].grad_w.ravel()
+        # distance = np.sum((grad_list-bp_grad_list)**2)/len(bp_grad_list)
+        # print(distance)
+        # if distance<10e-6:
+        #     print('AvgPooling Layer Gradiant check pass!')
+        # else:
+        #     print('AvgPooling Layer Gradiant check failed!')
+        #     return False
 
         index = 0
         n = np.size(self.convolution_pooling_layer[index].filters,0)

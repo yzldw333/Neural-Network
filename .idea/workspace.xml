@@ -8,6 +8,7 @@
       <change type="DELETED" beforePath="$PROJECT_DIR$/6layer.npz" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/8layer.npz" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NeuralNetwork/Layers/core.py" afterPath="$PROJECT_DIR$/NeuralNetwork/Layers/core.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py" afterPath="$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.py" afterPath="$PROJECT_DIR$/test.py" />
     </list>
@@ -46,13 +47,16 @@
         <entry file="file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="358" column="39" selection-start-line="358" selection-start-column="39" selection-end-line="358" selection-end-column="39" />
+              <caret line="204" column="43" selection-start-line="204" selection-start-column="43" selection-end-line="204" selection-end-column="43" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
-                <element signature="e#649#746#0" expanded="false" />
-                <element signature="e#14427#14670#0" expanded="false" />
-                <element signature="e#14708#14920#0" expanded="false" />
-                <element signature="e#14958#15270#0" expanded="false" />
+                <element signature="e#724#938#0" expanded="false" />
+                <element signature="e#973#1487#0" expanded="false" />
+                <element signature="e#1533#3748#0" expanded="false" />
+                <element signature="e#7991#8349#0" expanded="false" />
+                <element signature="e#8392#10093#0" expanded="false" />
+                <element signature="e#10136#12459#0" expanded="false" />
+                <element signature="e#12499#14527#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NeuralModel.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NeuralModel.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.207715">
-              <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -82,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.86646885">
+              <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -118,9 +122,9 @@
         <option value="$PROJECT_DIR$/NeuralNetwork/UML.puml" />
         <option value="$PROJECT_DIR$/initialize.py" />
         <option value="$PROJECT_DIR$/load_and_extract_mnist_data.py" />
-        <option value="$PROJECT_DIR$/NeuralNetwork/Layers/core.py" />
         <option value="$PROJECT_DIR$/NeuralNetwork/NeuralNetwork.py" />
         <option value="$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py" />
+        <option value="$PROJECT_DIR$/NeuralNetwork/Layers/core.py" />
         <option value="$PROJECT_DIR$/test.py" />
       </list>
     </option>
@@ -423,7 +427,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34053367" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53621346" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.53621346" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32909784" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
@@ -452,9 +456,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py</url>
-          <line>367</line>
-          <option name="timeStamp" value="154" />
+          <url>file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="157" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -467,7 +471,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="155" />
+      <option name="time" value="158" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -503,10 +507,13 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -554,10 +561,13 @@
           <caret line="95" column="11" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -605,10 +615,13 @@
           <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -629,10 +642,13 @@
           <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -680,10 +696,13 @@
           <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -745,10 +764,13 @@
           <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -810,10 +832,13 @@
           <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -873,13 +898,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/numpy/core/fromnumeric.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.018656716">
-          <caret line="2692" column="0" selection-start-line="2692" selection-start-column="0" selection-end-line="2692" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/initialize.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.45408162">
@@ -911,6 +929,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61445785">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/NeuralNetwork/NeuralNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -921,44 +947,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+    <entry file="file:///Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages/numpy/core/fromnumeric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61445785">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2694" column="0" selection-start-line="2694" selection-start-column="0" selection-end-line="2694" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/NeuralNetwork/Layers/core.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="358" column="39" selection-start-line="358" selection-start-column="39" selection-end-line="358" selection-end-column="39" />
+          <caret line="204" column="43" selection-start-line="204" selection-start-column="43" selection-end-line="204" selection-end-column="43" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-            <element signature="e#649#746#0" expanded="false" />
-            <element signature="e#14427#14670#0" expanded="false" />
-            <element signature="e#14708#14920#0" expanded="false" />
-            <element signature="e#14958#15270#0" expanded="false" />
+            <element signature="e#724#938#0" expanded="false" />
+            <element signature="e#973#1487#0" expanded="false" />
+            <element signature="e#1533#3748#0" expanded="false" />
+            <element signature="e#7991#8349#0" expanded="false" />
+            <element signature="e#8392#10093#0" expanded="false" />
+            <element signature="e#10136#12459#0" expanded="false" />
+            <element signature="e#12499#14527#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="67" column="17" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.86646885">
+          <caret line="67" column="26" selection-start-line="67" selection-start-column="26" selection-end-line="67" selection-end-column="26" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/NeuralNetwork/Model/NeuralModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.207715">
-          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

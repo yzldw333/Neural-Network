@@ -186,13 +186,13 @@ class NeuralModel:
         for (name,setting) in LayerDictionary:
             newLayer = None
             if name == 'ConvolutionLayer':
-                newLayer = ConvolutionLayer(setting[0],setting[1],setting[2])
+                newLayer = ConvolutionLayer(setting[0], setting[1], setting[2])
                 newLayer.name = self.name+str(len(self.sequences))+'layer'
                 self.convolution_pooling_layer.append(newLayer)
             elif name == 'MaxPoolingLayer':
-                newLayer = MaxPoolingLayer(setting[0],setting[1])
+                newLayer = MaxPoolingLayer(setting[0], setting[1])
             elif name == 'AvgPoolingLayer':
-                newLayer = AvgPoolingLayer(setting[0],setting[1])
+                newLayer = AvgPoolingLayer(setting[0], setting[1])
             elif name == 'FullCrossLayer':
                 newLayer = FullCrossLayer(setting)  # setting is a integer which means num of FC Layer
                 newLayer.name = self.name+str(len(self.sequences))+'layer'
@@ -220,34 +220,14 @@ class NeuralModel:
             self.sequences.append(self.output_layer)
         return True
 
-    def SetConvolutionPoolingLayer(self,LayerDictionary):
-        pass
-
-
-
-    def SetFullConnectLayer(self,LayerDictionary):
-        pass
-
-    # def SetActivationLayer(self,activeName):
-    #     if activeName == 'Sigmoid':
-    #         self.activeName = 'Sigmoid'
-    #     elif activeName == 'Tanh':
-    #         self.activeName = 'Tanh'
-    #     elif activeName == 'ReLu':
-    #         self.activeName = 'ReLu'
-    #     self.initLayerList['ACTIVATION_LAYER'] = True
-
-
-    def ConnectLayers(self):
-        pass
-
-
-    def SetTrainSamples(self,x,y):
+    def SetTrainSamples(self, x, y):
         self.train_x = x
         self.train_y = y
-    def SetTestSamples(self,x,y):
+
+    def SetTestSamples(self, x, y):
         self.test_x = x
         self.test_y = y
+
     def forward_compute(self):
         for layer in self.sequences:
             layer.forward_compute()
@@ -257,10 +237,9 @@ class NeuralModel:
             layer.backward_compute()
 
     def costFunction(self):
-        return self.output_layer.costFunc()
+        return self.output_layer.costValue
 
-    def minibatch_train(self,batch_size,steps,ifshow=True,gradiantCheck=True):
-
+    def minibatch_train(self, batch_size, steps, ifshow=True, gradiantCheck=True):
         if self.safety_check(gradiantCheck) is False:
             return False
         start_time = datetime.datetime.now()
@@ -278,25 +257,22 @@ class NeuralModel:
         draw_steps = []
         startid = 0
         for i in range(steps):
-            #recycle choose
-            if startid >=total_size:
-                startid%=total_size
+            # recycle choose
+            if startid >= total_size:
+                startid %= total_size
             endid = startid+tmp_size
             choose = []
-            if endid >=total_size:
-                endid%=total_size
-                choose+=list(range(startid,total_size))
-                choose+=list(range(0,endid))
+            if endid >= total_size:
+                endid %= total_size
+                choose += list(range(startid, total_size))
+                choose += list(range(0, endid))
             else:
-                choose+=list(range(startid,endid))
-            startid+=tmp_size
-            # random choose
-            # if i%5==0:
-            #     choose = random.sample(range(total_size),tmp_size)
-            #choose = random.sample(range(total_size),tmp_size)
-            self.input_layer.setValue(self.train_x[choose,:])
+                choose += list(range(startid, endid))
+            startid += tmp_size
+            # recycle choose
+            self.input_layer.setValue(self.train_x[choose, :])
 
-            self.output_layer.setY(self.train_y[choose,:])
+            self.output_layer.setY(self.train_y[choose, :])
             self.forward_compute()
             self.backward_compute()
             if np.isnan(self.output_layer.costValue):
@@ -306,11 +282,11 @@ class NeuralModel:
             draw_steps.append(i)
             new_tmp_time = datetime.datetime.now()
             if ifshow:
-                print('Step %s complete! CostValue %s  StepTime %s'%(i,self.output_layer.costValue,new_tmp_time-tmp_time))
+                print('Step %s complete! CostValue %s  StepTime %s' % (i, self.output_layer.costValue, new_tmp_time-tmp_time))
             tmp_time = new_tmp_time
         end_time = datetime.datetime.now()
-        print('Time:%s'%(end_time))
-        print('BP Cost Time:%s'%(end_time-start_time))
+        print('Time:%s' % (end_time))
+        print('BP Cost Time:%s' % (end_time-start_time))
         self.store_parameters()
         print('Save Parameters...')
         plt.plot(draw_steps,draw_cost,marker='.')
@@ -318,36 +294,36 @@ class NeuralModel:
         plt.show()
         return True
 
-    def batch_train(self,steps):
-        total_size = np.size(self.train_x,1)
-        self.minibatch_train(total_size,steps)
+    def batch_train(self, steps):
+        total_size = np.size(self.train_x, 1)
+        self.minibatch_train(total_size, steps)
 
     def store_parameters(self):
         for layer in self.full_cross_layer:
             layer.storeParameters()
         for layer in self.convolution_pooling_layer:
             layer.storeParameters()
+
     def test_error(self):
         right = 0
-        layerNum = len(self.sequences)
-        testNum,channel,height,width = self.test_x.shape
-        testNum,classNum = self.test_y.shape
+        testNum, channel, height, width = self.test_x.shape
+        testNum, classNum = self.test_y.shape
         testNum = int(testNum*0.3)
         for i in range(testNum):
 
-            testx = self.test_x[i,:].reshape(1,channel,height,width)
-            testy = self.test_y[i,:].reshape(1,classNum)
+            testx = self.test_x[i, :].reshape(1, channel, height, width)
+            testy = self.test_y[i, :].reshape(1, classNum)
             self.input_layer.setValue(testx)
             self.output_layer.setY(testy)
             self.forward_compute()
             if self.output_layer.costFunc == self.output_layer.LMS:
-                if self.output_layer.costFunc()<0.1:
-                    right+=1
+                if self.output_layer.costValue < 0.1:
+                    right += 1
             if self.output_layer.costFunc == self.output_layer.SoftMax:
-                if self.output_layer.y[0,self.output_layer.h.argmax()]==1:
-                    right+=1
+                if self.output_layer.y[0, self.output_layer.h.argmax()] == 1:
+                    right += 1
 
-        print('Correct percentage: %s'%(right*1.0/testNum*100))
+        print('Correct percentage: %s' % (right*1.0/testNum*100))
 
 
 

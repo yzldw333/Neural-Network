@@ -1,6 +1,10 @@
 import abc
 import numpy as np
 import random
+
+CONV_TYPE = 0
+FC_TYPE = 1
+ACTIVATE_TYPE = 2
 class BaseLayer(metaclass  = abc.ABCMeta):
 
     last_layer = None
@@ -9,7 +13,7 @@ class BaseLayer(metaclass  = abc.ABCMeta):
     num = 0     #num of elements in column not num of samples in row
     delta = None #n*m array for backward computation
     name = None
-
+    type = None    # layer type: CONV_TYPE, FC_TYPE, ACTIVATE_TYPE
     images = None
     width = None
     height = None
@@ -28,6 +32,7 @@ class BaseLayer(metaclass  = abc.ABCMeta):
         pass
 
 class ActivateLayer(BaseLayer):
+    type = ACTIVATE_TYPE
     def SetLast(self,lastLayer):
         self.last_layer = lastLayer
         self.num = lastLayer.num
@@ -57,6 +62,7 @@ class InputLayer(BaseLayer):
 
 
 class BaseConvolutionLayer(BaseLayer):
+    type = CONV_TYPE
     channel = None
     squareSize = None
     width = None
@@ -130,25 +136,20 @@ class ConvolutionLayer(BaseConvolutionLayer):
                 p = p.next_layer
             self.output_layer = p
         costValue = self.output_layer.costValue
-        if costValue>2:
+        if costValue >1:
             self.rate = 0.2
-        elif costValue>1.5:
-            self.rate = 0.15
-        elif costValue >1:
-            self.rate = 0.1
         elif costValue >0.5:
-            self.rate = 0.04
+            self.rate = 0.1
         elif costValue >0.05:
-            self.rate = 0.02
+            self.rate = 0.05
         elif costValue >0.02:
-            self.rate = 0.015
+            self.rate = 0.03
         elif costValue >0.01:
-            self.rate = 0.008
+            self.rate = 0.01
         elif costValue >0.005:
             self.rate = 0.004
 
     def initParameters(self):
-
         try:
             parameterFile = np.load(self.name+'.npz')
             self.filters = parameterFile['arr_0']
@@ -320,6 +321,7 @@ class AvgPoolingLayer(PoolingLayer):
 
 
 class FullCrossLayer(BaseLayer):
+    type = FC_TYPE
     theta = None
     grad_theta = None
     epsilon = 0.1
@@ -335,20 +337,16 @@ class FullCrossLayer(BaseLayer):
                 p = p.next_layer
             self.output_layer = p
         costValue = self.output_layer.costValue
-        if costValue>2:
+        if costValue >1:
             self.rate = 0.2
-        elif costValue>1.5:
-            self.rate = 0.15
-        elif costValue >1:
-            self.rate = 0.1
         elif costValue >0.5:
-            self.rate = 0.04
+            self.rate = 0.1
         elif costValue >0.05:
-            self.rate = 0.02
+            self.rate = 0.05
         elif costValue >0.02:
-            self.rate = 0.015
+            self.rate = 0.03
         elif costValue >0.01:
-            self.rate = 0.008
+            self.rate = 0.01
         elif costValue >0.005:
             self.rate = 0.004
 
@@ -391,62 +389,68 @@ class SigmoidLayer(ActivateLayer):
         pass
 
     def forward_compute(self):
-        if self.last_layer.images!=None:
+        if self.last_layer.type == CONV_TYPE:
             m = np.size(self.last_layer.images,0)
             self.images = 1.0/(1+np.exp(-self.last_layer.value))
             self.value = self.images.reshape(m,self.channel*self.height*self.width)
         else:
             self.value = 1.0/(1+np.exp(-self.last_layer.value))
+
     def backward_compute(self):
-        if self.last_layer.images!=None:
+        if self.last_layer.type == CONV_TYPE:
             m = np.size(self.images,0)
-            self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
-            self.last_layer.delta = self.delta*(self.images)*(1-self.images)
+            self.delta = self.delta.reshape(m, self.channel, self.height, self.width)
+            self.last_layer.delta = self.delta*self.images*(1-self.images)
         else:
-            self.last_layer.delta = self.delta*    (self.value)*(1-self.value)
+            self.last_layer.delta = self.delta * self.value * (1-self.value)
         pass
 
 class TanhLayer(ActivateLayer):
     def __init__(self):
         pass
+
     def forward_compute(self):
-        if self.last_layer.images!=None:
-            m = np.size(self.last_layer.images,0)
+        if self.last_layer.type == CONV_TYPE:
+            m = np.size(self.last_layer.images, 0)
             self.images = np.tanh(self.last_layer.images)
-            self.value = self.images.reshape(m,self.channel*self.height*self.width)
+            self.value = self.images.reshape(m, self.channel*self.height*self.width)
         else:
             self.value = np.tanh(self.last_layer.value)
+
     def backward_compute(self):
-        if self.last_layer.images!=None:
-            m = np.size(self.images,0)
-            self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
+        if self.last_layer.images == CONV_TYPE:
+            m = np.size(self.images, 0)
+            self.delta = self.delta.reshape(m, self.channel, self.height, self.width)
             self.last_layer.delta = self.delta*(1-self.images**2)
         else:
             self.last_layer.delta = self.delta*(1-self.value**2)
 
 class ReLuLayer(ActivateLayer):
     alpha = 1
+
     def __init__(self):
         pass
+
     def forward_compute(self):
-        if self.last_layer.images!=None:
-            m = np.size(self.last_layer.images,0)
-            self.images = np.maximum(0,self.alpha*self.last_layer.images)
-            self.value = self.images.reshape(m,self.channel*self.height*self.width)
+        if self.last_layer.type == CONV_TYPE:
+            m = np.size(self.last_layer.images, 0)
+            self.images = np.maximum(0, self.alpha*self.last_layer.images)
+            self.value = self.images.reshape(m, self.channel*self.height*self.width)
         else:
             self.value = np.maximum(0,self.alpha*self.last_layer.value)
+
     def backward_compute(self):
         m = np.size(self.value,0)
-        if self.images!=None:
-            self.delta = self.delta.reshape(m,self.channel,self.height,self.width)
+        if self.last_layer.type == CONV_TYPE:
+            self.delta = self.delta.reshape(m, self.channel, self.height, self.width)
             tmp = self.images.copy()
-            tmp[tmp<=0] = 0
-            tmp[tmp>0] = self.alpha
+            tmp[tmp <= 0] = 0
+            tmp[tmp > 0] = self.alpha
             self.last_layer.delta = self.delta*tmp
         else:
             tmp = self.value.copy()
-            tmp[tmp<=0] = 0
-            tmp[tmp>0] = self.alpha
+            tmp[tmp <= 0] = 0
+            tmp[tmp > 0] = self.alpha
             self.last_layer.delta = self.delta*tmp
 
 class OutputLayer(BaseLayer):
@@ -455,27 +459,31 @@ class OutputLayer(BaseLayer):
     lamb = 0
     costFunc = None
     costValue = None
+
     def __init__(self):
         pass
+
     def LMS(self):
-        res = np.sum((self.h-self.y)**2)/(2.0*np.size(self.y,0))
+        res = np.sum((self.h-self.y)**2)/(2.0*np.size(self.y, 0))
         self.costValue = res
         return res
+
     def SoftMax(self):
-        self.costValue = -np.sum(self.y*np.log(self.h))/(1.0*np.size(self.y,0))
+        self.costValue = -np.sum(self.y*np.log(self.h))/(1.0*np.size(self.y, 0))
         return self.costValue
 
-
     def init(self,costFuncName='LMS'):
-        if costFuncName is 'LMS':
+        if costFuncName == 'LMS':
             self.costFunc = self.LMS
             return True
-        elif costFuncName is 'SoftMax':
+        elif costFuncName == 'SoftMax':
             self.costFunc = self.SoftMax
             return True
         return False
-    def setY(self,y):
+
+    def setY(self, y):
         self.y = y
+
     def forward_compute(self):
         if self.costFunc == self.LMS:
             self.h = self.last_layer.value
@@ -484,6 +492,7 @@ class OutputLayer(BaseLayer):
             fenmu = np.sum(np.exp(self.last_layer.value),axis=1).reshape(m,1)
             self.h = np.exp(self.last_layer.value)/fenmu
         self.costValue=self.costFunc()
+
     def backward_compute(self):
         self.last_layer.delta = self.h-self.y
 
